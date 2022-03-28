@@ -5,20 +5,38 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* You Need :
+    - docker : https://docs.docker.com/get-docker/
+    - docker compose : https://docs.docker.com/compose/install/
+    - docker images ruby : automatically added on run command docker-compose run --no-deps web rails new . --force
+    - docker images mongo : automatically added
+    - you may need install rails on local : https://guides.rubyonrails.org/v6.1/
 
-* System dependencies
+* RUN :
+    - docker-compose run --no-deps web rails new . --force
+    - docker-compose up --build
 
-* Configuration
+Check Container :
+    - docker container ls
+    - docker container ls -a
 
-* Database creation
+Run Container after created :
+    - docker-compose start
 
-* Database initialization
 
-* How to run the test suite
+* Ruby version : 2.5.0 - 2.5.9
+* Rails : V6.1.5
+* MongoDB : 4.2
 
-* Services (job queues, cache servers, search engines, etc.)
+read more for code documentation :
+    - https://www.mongodb.com/docs/mongoid/current/tutorials/getting-started-rails/
 
-* Deployment instructions
+this code modified from rails mongo documentation, just add configuration docker-compose
 
-* ...
+what changes ?
+    - modification code on file app/config/mongoid.yml
+    - add file Dockerfile
+    - add file docker-compose.yml
+    - add file entrypoint.sh
+    - Gemfile
+    - Gemfile.lock, delete all code or create new empty file Gemfile.lock
