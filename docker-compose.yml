@@ -1,14 +1,22 @@
 version: "3.9"
 services:
+  # docker compose db nya udah di create di lainnya
   db:
     image: mongo:latest
-    container_name: mongo-latest
+    container_name: mongo-blog
+    environment:
+          - TZ='Asia/Jakarta'
+          - MONGO_INITDB_ROOT_USERNAME="grumpycat"
+          - MONGO_INITDB_ROOT_PASSWORD="alo123"
+    command: [--auth]
     volumes:
-      - $HOME/Documents/docker/mongodb-data:/data/db
+      - $HOME/Documents/docker/mongodb/blog-mongodb:/data/db/
+      #move init-mongo.js to inside docker foler docker-entrypoint-initdb.d
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js
     ports:
       - "27018:27017"
     networks: 
-      - network-db-mongo
+      - network-db-mongo-1
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -16,9 +24,10 @@ services:
       - .:/blog-mongo
     ports:
       - "3000:3000"
+    # docker compose db nya udah di create di lainnya
     depends_on:
       - db
     networks: 
-      - network-db-mongo
+      - network-db-mongo-1
 networks: 
-  network-db-mongo:
+  network-db-mongo-1:

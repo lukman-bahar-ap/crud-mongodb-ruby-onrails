@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.9'
+ruby '3.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.5'
+gem 'rails', '~> 7.0', '>= 7.0.4'
 # Mongoid 7.0.5 or higher is required to use Rails 6.0.
-gem 'mongoid', '~> 7.0.5'
+gem 'mongoid', '~> 8.0', '>= 8.0.2'
+#gem 'mongoid', '~> 7.0.5'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
