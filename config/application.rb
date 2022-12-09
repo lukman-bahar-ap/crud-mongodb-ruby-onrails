@@ -21,9 +21,15 @@ Bundler.require(*Rails.groups)
 
 module Blog
   class Application < Rails::Application
+    # autoload_paths
+    config.autoload_paths += %w[lib/]
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # Initialize i18n path to manage recursive folders
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.active_job.queue_adapter = :sidekiq
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -172,7 +172,19 @@ development:
     # (Deprecated) In MongoDB 4.0 and earlier, set whether to create
     # indexes in the background by default. (default: false)
     # background_indexing: false
-
+production:
+  # Configure available database clients. (required)
+  clients:
+    # Defines the default client. (required)
+    default:
+      database: blog_development
+      hosts:
+        - mongo-blog:27017
+      options:
+        user: 'grumpycat'
+        password: 'alo123'
+        auth_source: blog_development
+  options:
 test:
   clients:
     default:

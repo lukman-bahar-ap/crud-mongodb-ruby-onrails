@@ -24,7 +24,7 @@ Run Container after created :
     - docker-compose start
 
 
-* Ruby version : 3.0.3
+* Ruby version : 3.1.3
 * Rails : V7.0.1
 * MongoDB : 8
 
