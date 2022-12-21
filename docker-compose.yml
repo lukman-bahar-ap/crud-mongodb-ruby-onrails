@@ -10,11 +10,10 @@ services:
           - MONGO_INITDB_ROOT_PASSWORD="alo123"
     command: [--auth]
     volumes:
-      - $HOME/Documents/docker/mongodb/blog-mongodb:/data/db/
-      # - mongo:/data/db
-      # - mongo:/data/configdb
-      #move init-mongo.js to inside docker foler docker-entrypoint-initdb.d
-      #- ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js
+      # - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      # - $HOME/Documents/docker/mongodb/blog-mongodb:/data/db/
+       - mongo_db:/data/db
+       - mongo_db:/data/configdb
     ports:
       - "27018:27017"
     networks: 
@@ -28,6 +27,7 @@ services:
       - RAILS_ENV='production'
       - RAILS_SERVE_STATIC_FILES=true
     command: ["nginx"]
+    #command: ["nginx", "-g", "daemon off;"]
     volumes:
       - ./:/var/www/html/blog_mongo.com
     ports:
@@ -40,7 +40,7 @@ services:
     networks: 
       - network-db-mongo-1
 volumes:
-  mongo:
+  mongo_db:
     driver: local
 networks: 
   network-db-mongo-1:

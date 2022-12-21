@@ -17,6 +17,9 @@ COPY --chown=app:app . .
 
 RUN chmod +x rails_s.sh
 
+RUN chmod +x init-db.sh
+RUN chmod +x init-mongo.js
+
 # https://github.com/phusion/passenger-docker#selecting_default_ruby
 RUN bash -lc 'rvm use 3.0.3@blog-mongo --create --default'
 
@@ -34,7 +37,7 @@ RUN set -ex \
     && mkdir log \
     && rm -rf tmp \
     && mkdir tmp
-# RUN rvm-exec 3.0.3 rails assets:clobber
+RUN rvm-exec 3.0.3 rails assets:clobber
 RUN rvm-exec 3.0.3 rails assets:precompile
 RUN set -ex \
     && chown -R app:app /home/app/blog-mongo.com/public \

@@ -1,6 +1,6 @@
 server {
     listen 8080;
-    server_name example.com;
+    server_name blog-mongo.com;
 
     # Tell Nginx and Passenger where your app's 'public' directory is
     root /home/app/blog-mongo.com/public;
