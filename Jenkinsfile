@@ -5,7 +5,7 @@ pipeline {
         stage('Build and Deploy Branch Main') {
             when {
                 expression {
-                    return env.GIT_BRANCH == "bitbucket/main"
+                    return env.GIT_BRANCH == "origin/main"
                 }
             }
             steps {
