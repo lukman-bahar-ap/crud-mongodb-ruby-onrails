@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     echo "Building and deploying branch developement "
                     ls
-                    rsync -r . grumpycat@172.14.0.48:/blog-mongo-docker/crud-rails-mongodb-docker
+                    rsync -r . root@172.14.0.48:/blog-mongo-docker/crud-rails-mongodb-docker
                 '''
             }
         }
