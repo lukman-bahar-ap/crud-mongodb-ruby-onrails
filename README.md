@@ -3,6 +3,10 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+confluence  :
+
+    https://alodokter.atlassian.net/wiki/spaces/PF/pages/3123576833/Create+Docker+on+Rails+Project+using+phusion+passenger+as+base+image
+
 Things you may want to cover:
 
 * You Need :
@@ -24,7 +28,7 @@ Run Container after created :
     - docker-compose start
 
 
-* Ruby version : 3.1.3
+* Ruby version : 3.0.3
 * Rails : V7.0.1
 * MongoDB : 8
 
